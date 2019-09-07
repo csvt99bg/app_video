@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_120sdp"
+    android:background="@color/grey"
+    android:id="@+id/itemCatecory"
+    >
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/_7sdp"
+            android:layout_marginRight="@dimen/_7sdp"
+            android:layout_height="@dimen/_115sdp">
+
+            <RelativeLayout
+                android:background="@color/White"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:id="@+id/imgCategories"
+                    android:src="@drawable/aaa"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp" />
+
+                <TextView
+                    android:id="@+id/tvNameCategories"
+                    android:background="@color/White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/_70sdp"
+                    android:layout_marginRight="2dp"
+                    android:maxLines="2"
+                    android:text="@string/nameCategory"
+                    android:textSize="@dimen/_20sdp" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

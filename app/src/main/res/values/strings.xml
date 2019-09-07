@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">App_Video</string>
+    
+    <!--toolbar-->
+        <string name="fragHotVideo">Hot videos</string>
+        <string name="fragCategories">Categories</string>
+
+    <!--Video-->
+    <string name="nameVideo">Name Video</string>
+    <string name="TimeVideo">10:00</string>
+    <string name="TimeCreat">2008-01-01</string>
+    <string name="timeCreat">00:00:00</string>
+
+    <string name="nameCategory">Name Category</string>
+
+    <!---Itemcategory-->
+    <string name="tvNameItemCategory">Name Item</string>
+    <string name="tvTimeCreatItem">Time Creat</string>
+
+    <string name="loading">Loading...</string>
+
+    <!---controlVideo-->
+    <string name="timeDuration">00:00</string>
+    <string name="timeCurrent">00:00</string>
+    <string name="currentVol">0</string>
+
+</resources>
+
