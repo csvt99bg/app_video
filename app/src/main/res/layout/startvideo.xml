@@ -229,8 +229,37 @@
 
     </RelativeLayout>
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/relaTittle"
         android:layout_below="@id/RelayVideoView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvNameVideoPlaying"
+            android:textSize="@dimen/_20sdp"
+            android:text="@string/nameVideo"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tvTimeCreatVideoPlaying"
+            android:textSize="@dimen/_10sdp"
+            android:text="@string/TimeCreat"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_alignParentBottom="true"
+            android:paddingRight="@dimen/_5sdp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:textStyle="italic"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@id/relaTittle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
