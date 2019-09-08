@@ -21,6 +21,7 @@ import com.example.app_video.Adapter.ItemCategory.ItemCategory;
 import com.example.app_video.DefineURL;
 import com.example.app_video.InterOnClick;
 import com.example.app_video.Main.MainActivity;
+import com.example.app_video.PublicMethod;
 import com.example.app_video.R;
 
 import org.json.JSONArray;
@@ -36,7 +37,7 @@ public class FragCategories extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Categories> categoriesArrayList;
     CategoriesAdapter adapter;
-
+    PublicMethod publicMethod= new PublicMethod();
    // String url = "https://demo5639557.mockable.io/getCategory";
     String url = DefineURL.CATEGORY_URL;
 
@@ -60,7 +61,11 @@ public class FragCategories extends Fragment {
         categoriesArrayList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.rvListCategories);
 
-        new dogetCategory(url).execute();
+        if(publicMethod.checkConnectInternet(getContext())==false){
+            Toast.makeText(getContext(), "No Internet", Toast.LENGTH_LONG).show();
+        }
+        else
+            new dogetCategory(url).execute();
         adapter = new CategoriesAdapter(categoriesArrayList);
         adapter.setClickCategory(new InterOnClick() {
             @Override

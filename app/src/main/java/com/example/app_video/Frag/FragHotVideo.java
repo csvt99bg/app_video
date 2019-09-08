@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ import com.example.app_video.Adapter.ItemCategory.ItemCategory;
 import com.example.app_video.DefineURL;
 import com.example.app_video.InterOnClick;
 import com.example.app_video.Main.StartVideo;
+import com.example.app_video.PublicMethod;
 import com.example.app_video.R;
 import com.example.app_video.Adapter.HotVideo.Video;
 import com.example.app_video.Adapter.HotVideo.VideoAdapter;
@@ -39,6 +41,7 @@ public class FragHotVideo extends Fragment {
 
     String url = DefineURL.HOT_VIDEO_URL;
     String json;
+    PublicMethod publicMethod= new PublicMethod();
     private static final String TAG = "FragHotVideo";
 
     public static FragHotVideo newInstance() {
@@ -58,7 +61,10 @@ public class FragHotVideo extends Fragment {
         videoList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.rvListHotVideo);
 
-        new dogetVideo(url).execute();
+        if(publicMethod.checkConnectInternet(getContext())==false)
+            Toast.makeText(getContext(), "No Internet", Toast.LENGTH_LONG).show();
+        else
+            new dogetVideo(url).execute();
 
         adapter = new VideoAdapter(videoList);
 
@@ -131,15 +137,15 @@ public class FragHotVideo extends Fragment {
                 JSONArray array = new JSONArray(json);
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject object = array.getJSONObject(i);
-                    String avt = object.getString("avatar");
-                    String timePlay = object.getString("price");
-                    String timeCreat = object.getString("date_created");
-                    String name = object.getString("title");
-                    String url = object.getString("file_mp4");
-                    videoList.add(new Video(avt, "10:00", timeCreat, name, url));
-                }
-                adapter.notifyDataSetChanged();
-            } catch (Exception e) {
+                String avt = object.getString("avatar");
+                String timePlay = object.getString("price");
+                String timeCreat = object.getString("date_created");
+                String name = object.getString("title");
+                String url = object.getString("file_mp4");
+                videoList.add(new Video(avt, "10:00", timeCreat, name, url));
+            }
+            adapter.notifyDataSetChanged();
+        } catch (Exception e) {
                 e.printStackTrace();
             }
         }

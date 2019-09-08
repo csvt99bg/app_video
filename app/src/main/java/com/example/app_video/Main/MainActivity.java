@@ -1,10 +1,5 @@
 package com.example.app_video.Main;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,17 +8,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.example.app_video.Adapter.Categories.Categories;
 import com.example.app_video.Adapter.HotVideo.Video;
 import com.example.app_video.Adapter.ItemCategory.ItemCategory;
 import com.example.app_video.Frag.FragCategories;
 import com.example.app_video.Frag.FragHotVideo;
-import com.example.app_video.Frag.FragItemCategory;
 import com.example.app_video.InterOnClick;
 import com.example.app_video.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements InterOnClick {
         ArrayList<Video> videoList;
