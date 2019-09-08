@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app_video.Adapter.Categories.Categories;
 import com.example.app_video.Adapter.ItemCategory.ItemCategory;
+import com.example.app_video.DefineURL;
 import com.example.app_video.InterOnClick;
 import com.example.app_video.Main.StartVideo;
 import com.example.app_video.R;
@@ -29,13 +30,14 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FragHotVideo extends Fragment {
     RecyclerView recyclerView;
     VideoAdapter adapter;
     ArrayList<Video> videoList;
 
-    String url = "https://demo5639557.mockable.io/getVideoHot";
+    String url = DefineURL.HOT_VIDEO_URL;
     String json;
     private static final String TAG = "FragHotVideo";
 
@@ -70,6 +72,8 @@ public class FragHotVideo extends Fragment {
 
                 intent.putExtra("url", url);
                 intent.putExtra("name",video.getNameVideo());
+                intent.putExtra("time",video.getTimeCreat());
+
                 startActivity(intent);
             }
 
@@ -82,6 +86,7 @@ public class FragHotVideo extends Fragment {
             public void onClickItem(ItemCategory itemCategory) {
 
             }
+
         });
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);

@@ -18,6 +18,7 @@ import com.example.app_video.Adapter.Categories.Categories;
 import com.example.app_video.Adapter.HotVideo.Video;
 import com.example.app_video.Adapter.ItemCategory.ItemCategory;
 import com.example.app_video.Adapter.ItemCategory.ItemCategoryAdapter;
+import com.example.app_video.DefineURL;
 import com.example.app_video.InterOnClick;
 import com.example.app_video.Main.StartVideo;
 import com.example.app_video.R;
@@ -29,13 +30,14 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FragItemCategory extends Fragment {
 
     ArrayList<ItemCategory> arrayList;
     ItemCategoryAdapter adapter;
     RecyclerView recyclerView;
-    String url = "https://demo5639557.mockable.io/getItemCategory";
+    String url = DefineURL.ITEM_CATEGORY_URL;
     private static final String TAG = "FragItemCategory";
 
         public static FragItemCategory newInstance() {
@@ -71,9 +73,11 @@ public class FragItemCategory extends Fragment {
                 Intent intent =new Intent(getContext(), StartVideo.class);
                 intent.putExtra("url",itemCategory.getUrl());
                 intent.putExtra("name",itemCategory.getName());
+                intent.putExtra("time",itemCategory.getDate());
                 startActivity(intent);
 
             }
+
         });
         recyclerView.setAdapter(adapter);
 

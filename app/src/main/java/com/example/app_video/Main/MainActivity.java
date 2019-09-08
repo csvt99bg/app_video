@@ -23,6 +23,7 @@ import com.example.app_video.InterOnClick;
 import com.example.app_video.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements InterOnClick {
         ArrayList<Video> videoList;

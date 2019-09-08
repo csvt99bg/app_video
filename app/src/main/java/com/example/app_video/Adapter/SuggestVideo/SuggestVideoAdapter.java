@@ -1,4 +1,4 @@
-package com.example.app_video.Adapter.ItemCategory;
+package com.example.app_video.Adapter.SuggestVideo;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,30 +12,34 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.app_video.Adapter.ItemCategory.ItemCategory;
 import com.example.app_video.InterOnClick;
 import com.example.app_video.R;
 
 import java.util.ArrayList;
 
-public class ItemCategoryAdapter extends RecyclerView.Adapter<ItemCategoryAdapter.ViewHolder> {
+
+public class SuggestVideoAdapter extends RecyclerView.Adapter<SuggestVideoAdapter.ViewHolder> {
     Context context;
     ArrayList<ItemCategory> arrayList;
     InterOnClick onClick;
 
-    public ItemCategoryAdapter(ArrayList<ItemCategory> arrayList) {
+    public SuggestVideoAdapter(ArrayList<ItemCategory> arrayList) {
         this.arrayList = arrayList;
     }
 
-    public void setItemCategoryAdapter(InterOnClick onClick) {
+    public void setSuggestVideoAdapter(InterOnClick onClick) {
         this.onClick = onClick;
     }
+
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.itemcategory,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        SuggestVideoAdapter.ViewHolder viewHolder = new SuggestVideoAdapter.ViewHolder(view);
         context = parent.getContext();
         return viewHolder;
     }
@@ -43,9 +47,8 @@ public class ItemCategoryAdapter extends RecyclerView.Adapter<ItemCategoryAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ItemCategory itemCategory = arrayList.get(position);
-
-        holder.name.setText(itemCategory.name);
-        holder.date.setText(itemCategory.date);
+        holder.name.setText(itemCategory.getName());
+        holder.date.setText(itemCategory.getDate());
         Glide.with(context).load(itemCategory.getAvatar()).into(holder.avatar);
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +61,6 @@ public class ItemCategoryAdapter extends RecyclerView.Adapter<ItemCategoryAdapte
 
     @Override
     public int getItemCount() {
-
         return arrayList.size();
     }
 
@@ -66,6 +68,7 @@ public class ItemCategoryAdapter extends RecyclerView.Adapter<ItemCategoryAdapte
         ImageView avatar;
         TextView name,date;
         RelativeLayout relativeLayout;
+
         public ViewHolder(@NonNull View view) {
             super(view);
             avatar = view.findViewById(R.id.imgItemCategory);

@@ -163,6 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_weight="8"
                 android:background="@color/Black"
                 android:orientation="horizontal">
@@ -228,52 +229,59 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
     <RelativeLayout
-        android:id="@+id/relaTittle"
+        android:visibility="invisible"
+        android:background="@color/White"
+        android:id="@+id/relaDetailVideoPlaying"
+        android:layout_margin="@dimen/_3sdp"
         android:layout_below="@id/RelayVideoView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="@dimen/_75sdp">
         <TextView
             android:id="@+id/tvNameVideoPlaying"
-            android:textSize="@dimen/_20sdp"
-            android:text="@string/nameVideo"
+            android:textColor="@color/Black"
+            android:layout_toRightOf="@+id/relaBgr"
             android:layout_width="match_parent"
-            android:layout_margin="@dimen/_5sdp"
-            android:textStyle="bold"
+            android:text="@string/nameCategory"
+            android:textSize="@dimen/_15sdp"
+            android:maxLines="2"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tvTimeCreatVideoPlaying"
-            android:textSize="@dimen/_10sdp"
-            android:text="@string/TimeCreat"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_alignParentBottom="true"
-            android:paddingRight="@dimen/_5sdp"
             android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingRight="@dimen/_3sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="@string/TimeCreat"
+            android:textSize="@dimen/_10sdp"
             android:textStyle="italic"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-
     </RelativeLayout>
-
-    <ScrollView
-        android:layout_below="@id/relaTittle"
+    <LinearLayout
+        android:id="@+id/lnSuggestVideo"
+        android:layout_below="@id/relaDetailVideoPlaying"
+        android:background="@color/White"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:visibility="invisible"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:textColor="@color/Black"
+            android:textSize="@dimen/_20sdp"
+            android:text="Gợi ý"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvListVideo"
+
+            android:id="@+id/rvListSuggest"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
         </androidx.recyclerview.widget.RecyclerView>
-    </ScrollView>
 
-
-
-
-
+    </LinearLayout>
 
 
 </RelativeLayout>
