@@ -53,7 +53,6 @@ public class StartVideo extends AppCompatActivity {
     ImageView btfullScreen, btExitFullScreen;
     ArrayList<ItemCategory> arrayList;
     String url = DefineURL.ITEM_CATEGORY_URL;
-    RecyclerView rvListVideo;
 
     RelativeLayout toolbar;
 

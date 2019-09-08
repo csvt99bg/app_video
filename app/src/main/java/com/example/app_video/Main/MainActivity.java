@@ -28,10 +28,7 @@ public class MainActivity extends AppCompatActivity implements InterOnClick {
         ImageView imgMenu;
         Video clickVideo;
         Categories clickCategories;
-        ArrayList<Categories> categoriesArrayList;
         ProgressBar progressBar;
-        LinearLayout lnProgess;
-
     private static final String TAG = "MainActivity";
 
 

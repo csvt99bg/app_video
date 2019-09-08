@@ -20,8 +20,7 @@ import com.example.app_video.Adapter.HotVideo.Video;
 import com.example.app_video.Adapter.ItemCategory.ItemCategory;
 import com.example.app_video.DefineURL;
 import com.example.app_video.InterOnClick;
-import com.example.app_video.Main.MainActivity;
-import com.example.app_video.PublicMethod;
+import com.example.app_video.Checking_Internet;
 import com.example.app_video.R;
 
 import org.json.JSONArray;
@@ -31,13 +30,12 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FragCategories extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Categories> categoriesArrayList;
     CategoriesAdapter adapter;
-    PublicMethod publicMethod= new PublicMethod();
+    Checking_Internet checkingInternet = new Checking_Internet();
    // String url = "https://demo5639557.mockable.io/getCategory";
     String url = DefineURL.CATEGORY_URL;
 
@@ -61,7 +59,7 @@ public class FragCategories extends Fragment {
         categoriesArrayList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.rvListCategories);
 
-        if(publicMethod.checkConnectInternet(getContext())==false){
+        if(checkingInternet.checkConnectInternet(getContext())==false){
             Toast.makeText(getContext(), "No Internet", Toast.LENGTH_LONG).show();
         }
         else

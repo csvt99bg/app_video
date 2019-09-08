@@ -20,7 +20,7 @@ import com.example.app_video.Adapter.ItemCategory.ItemCategory;
 import com.example.app_video.DefineURL;
 import com.example.app_video.InterOnClick;
 import com.example.app_video.Main.StartVideo;
-import com.example.app_video.PublicMethod;
+import com.example.app_video.Checking_Internet;
 import com.example.app_video.R;
 import com.example.app_video.Adapter.HotVideo.Video;
 import com.example.app_video.Adapter.HotVideo.VideoAdapter;
@@ -32,7 +32,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FragHotVideo extends Fragment {
     RecyclerView recyclerView;
@@ -41,7 +40,7 @@ public class FragHotVideo extends Fragment {
 
     String url = DefineURL.HOT_VIDEO_URL;
     String json;
-    PublicMethod publicMethod= new PublicMethod();
+    Checking_Internet checkingInternet = new Checking_Internet();
     private static final String TAG = "FragHotVideo";
 
     public static FragHotVideo newInstance() {
@@ -61,7 +60,7 @@ public class FragHotVideo extends Fragment {
         videoList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.rvListHotVideo);
 
-        if(publicMethod.checkConnectInternet(getContext())==false)
+        if(checkingInternet.checkConnectInternet(getContext())==false)
             Toast.makeText(getContext(), "No Internet", Toast.LENGTH_LONG).show();
         else
             new dogetVideo(url).execute();

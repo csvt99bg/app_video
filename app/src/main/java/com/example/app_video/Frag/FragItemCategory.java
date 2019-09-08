@@ -22,7 +22,7 @@ import com.example.app_video.Adapter.ItemCategory.ItemCategoryAdapter;
 import com.example.app_video.DefineURL;
 import com.example.app_video.InterOnClick;
 import com.example.app_video.Main.StartVideo;
-import com.example.app_video.PublicMethod;
+import com.example.app_video.Checking_Internet;
 import com.example.app_video.R;
 
 import org.json.JSONArray;
@@ -32,10 +32,9 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FragItemCategory extends Fragment {
-    PublicMethod publicMethod= new PublicMethod();
+    Checking_Internet checkingInternet = new Checking_Internet();
     ArrayList<ItemCategory> arrayList;
     ItemCategoryAdapter adapter;
     RecyclerView recyclerView;
@@ -57,7 +56,7 @@ public class FragItemCategory extends Fragment {
 
             arrayList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.rvListItemCategoty);
-        if(publicMethod.checkConnectInternet(getContext())==false)
+        if(checkingInternet.checkConnectInternet(getContext())==false)
             Toast.makeText(getContext(), "No Internet", Toast.LENGTH_LONG).show();
         else
             new dogetItem(url).execute();
