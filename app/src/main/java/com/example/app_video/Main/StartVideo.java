@@ -194,7 +194,7 @@ public class StartVideo extends AppCompatActivity {
         ShowContrler_delay_10s showContrler_delay_10s = new ShowContrler_delay_10s();
         handler.postDelayed(showContrler_delay_10s, 5000);
 
-
+        // control  Volume and position
         Videoview.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -247,6 +247,7 @@ public class StartVideo extends AppCompatActivity {
             }
         });
 
+        // Custom Control Play
         tvTimeStart.setText(millisecondsToString(0));
         tvTimeEnd.setText(millisecondsToString(Videoview.getDuration()));
 
@@ -332,10 +333,10 @@ public class StartVideo extends AppCompatActivity {
                 getTimeCurrent = Videoview.getCurrentPosition();
 
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) relaVideoView.getLayoutParams();
-////                params.width = params.MATCH_PARENT;
-////                params.height = params.MATCH_PARENT;
-                relaVideoView.setLayoutParams(params);
+               RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) relaVideoView.getLayoutParams();
+               params1.width = params.MATCH_PARENT;
+                params1.height = params.MATCH_PARENT;
+                relaVideoView.setLayoutParams(params1);
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
                 Videoview.seekTo(getTimeCurrent);
