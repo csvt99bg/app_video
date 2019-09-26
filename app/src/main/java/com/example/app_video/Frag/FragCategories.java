@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,13 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app_video.Adapter.Categories.Categories;
-import com.example.app_video.Adapter.Categories.CategoriesAdapter;
-import com.example.app_video.Adapter.HotVideo.Video;
-import com.example.app_video.Adapter.ItemCategory.ItemCategory;
-import com.example.app_video.DefineURL;
-import com.example.app_video.InterOnClick;
-import com.example.app_video.Checking_Internet;
+import com.example.app_video.Contact.Categories;
+import com.example.app_video.Adapter.CategoriesAdapter;
+import com.example.app_video.define.Define_kw;
+import com.example.app_video.Interface.IClick_Category;
+import com.example.app_video.define.DefineURL;
 import com.example.app_video.R;
 
 import org.json.JSONArray;
@@ -34,53 +31,32 @@ import java.util.ArrayList;
 public class FragCategories extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Categories> categoriesArrayList;
-    CategoriesAdapter adapter;
-    Checking_Internet checkingInternet = new Checking_Internet();
-   // String url = "https://demo5639557.mockable.io/getCategory";
+    CategoriesAdapter categoriesAdapter;
     String url = DefineURL.CATEGORY_URL;
 
     private static final String TAG = "FragCategories";
-
     public static FragCategories newInstance() {
-
         Bundle args = new Bundle();
-
         FragCategories fragment = new FragCategories();
         fragment.setArguments(args);
         return fragment;
-
     }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragcategories, container, false);
-
         categoriesArrayList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.rvListCategories);
+        new dogetCategory(url).execute();
+        categoriesAdapter = new CategoriesAdapter(categoriesArrayList);
+        categoriesAdapter.setClickCategory(new IClick_Category() {
 
-        if(checkingInternet.checkConnectInternet(getContext())==false){
-            Toast.makeText(getContext(), "No Internet", Toast.LENGTH_LONG).show();
-        }
-        else
-            new dogetCategory(url).execute();
-        adapter = new CategoriesAdapter(categoriesArrayList);
-        adapter.setClickCategory(new InterOnClick() {
-            @Override
-            public void onClickVideo(Video video) {
-            }
             @Override
             public void oncLickCategory(Categories categories) {
-               // getFragmentManager().beginTransaction().add(R.id.container,new  FragItemCategory()).remove(FragCategories.this).commit();
                     getFragmentManager().beginTransaction().replace(R.id.container, new FragItemCategory()).commit();
             }
-            @Override
-            public void onClickItem(ItemCategory itemCategory) {
-
-            }
-
         });
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(categoriesAdapter);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         return view;
@@ -89,14 +65,12 @@ public class FragCategories extends Fragment {
 
         String newUrl;
         String json = "";
-
         public dogetCategory(String newUrl) {
             this.newUrl = newUrl;
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-
             try {
                 URL url = new URL(newUrl);
                 URLConnection connection = url.openConnection();
@@ -106,28 +80,23 @@ public class FragCategories extends Fragment {
                     json += (char) character;
                 }
                 Log.d(TAG, "doInBackground: " + json);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             return null;
         }
-
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
             try {
                 JSONArray array = new JSONArray(json);
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject object = array.getJSONObject(i);
-                    String avt = object.getString("thumb");
-                    String name = object.getString("title");
+                    String avt = object.getString(Define_kw.KW_THUMB);
+                    String name = object.getString(Define_kw.KW_TITLE);
                     categoriesArrayList.add(new Categories(avt, name));
                 }
-
-                adapter.notifyDataSetChanged();
+                categoriesAdapter.notifyDataSetChanged();
             } catch (Exception e) {
                 e.printStackTrace();
             }

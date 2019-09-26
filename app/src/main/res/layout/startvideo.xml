@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/Video"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightBlack"
+    android:background="@color/White"
     android:orientation="vertical">
 
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loading"
+        app:SpinKit_Color="@color/White"
+        android:layout_centerInParent="true"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp" />
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -114,6 +122,22 @@
             android:background="@color/colorControler"
             android:orientation="vertical">
 
+            <ImageButton
+                android:id="@+id/btBackVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/lightDark"
+                android:backgroundTint="@color/colorlightbutton"
+                android:src="@drawable/icon_back" />
+            <ImageButton
+                android:id="@+id/btSaveVideo"
+                android:src="@drawable/ic_playlist_add_black_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/_10sdp"
+                android:backgroundTint="@color/colorlightbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -128,7 +152,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/_20sdp"
                     android:background="@color/colorlightbutton"
-                    android:src="@drawable/ic_replay_10_black_24dp" />
+                    android:src="@drawable/bt_pre_24dp" />
 
                 <ImageButton
                     android:id="@+id/btPause"
@@ -155,7 +179,7 @@
                     android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_toRightOf="@id/btPause"
                     android:background="@color/colorlightbutton"
-                    android:src="@drawable/ic_replay_10_black_24dp" />
+                    android:src="@drawable/bt_next_24dp" />
 
             </RelativeLayout>
 
@@ -163,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
                 android:layout_weight="8"
                 android:background="@color/Black"
                 android:orientation="horizontal">
@@ -236,8 +260,9 @@
         android:layout_margin="@dimen/_3sdp"
         android:layout_below="@id/RelayVideoView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_75sdp">
+        android:layout_height="@dimen/_70sdp">
         <TextView
+            android:layout_marginLeft="@dimen/_5sdp"
             android:id="@+id/tvNameVideoPlaying"
             android:textColor="@color/Black"
             android:layout_toRightOf="@+id/relaBgr"
@@ -257,6 +282,7 @@
             android:textStyle="italic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </RelativeLayout>
     <LinearLayout
         android:id="@+id/lnSuggestVideo"
@@ -269,8 +295,8 @@
         >
         <TextView
             android:textColor="@color/Black"
-            android:textSize="@dimen/_20sdp"
-            android:text="Gợi ý"
+            android:textSize="@dimen/_15sdp"
+            android:text="@string/Next_Video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <androidx.recyclerview.widget.RecyclerView

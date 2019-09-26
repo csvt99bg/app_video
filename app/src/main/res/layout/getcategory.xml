@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_120sdp"
-    android:background="@color/grey"
-    android:id="@+id/itemCatecory"
-    >
+    android:background="@color/White"
+    android:id="@+id/itemCatecory">
         <androidx.cardview.widget.CardView
+            app:cardElevation="@dimen/_3sdp"
+            app:cardUseCompatPadding="true"
             android:layout_width="match_parent"
-            android:layout_marginLeft="@dimen/_7sdp"
-            android:layout_marginRight="@dimen/_7sdp"
-            android:layout_height="@dimen/_115sdp">
+            android:layout_height="match_parent"
+            >
 
             <RelativeLayout
                 android:background="@color/White"
@@ -21,7 +22,6 @@
                     android:scaleType="fitXY"
                     android:id="@+id/imgCategories"
                     android:src="@drawable/aaa"
-                    android:layout_margin="@dimen/_4sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp" />
 
@@ -31,8 +31,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="@dimen/_70sdp"
-                    android:layout_marginRight="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_2sdp"
                     android:maxLines="2"
                     android:text="@string/nameCategory"
                     android:textSize="@dimen/_20sdp" />
